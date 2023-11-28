@@ -1,6 +1,5 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
-
 import os
 
 app = Flask(__name__)
@@ -26,6 +25,14 @@ def upload_files():
             return 'Please select two files before uploading.'
     return 'Failed to upload files'
 
+@app.route('/uploads')
+def list_uploads():
+    files = os.listdir(app.config['UPLOAD_FOLDER'])
+    return render_template('list_uploads.html', files=files)
+
+@app.route('/uploads/<filename>')
+def download_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
 if __name__ == '__main__':
     app.run(debug=True)

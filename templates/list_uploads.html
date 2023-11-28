@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Uploaded Files</title>
+    <!-- Include Bootstrap or other CSS if needed -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f7f7f7;
+            padding-top: 20px;
+        }
+
+        .download-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="download-container">
+            <h2>Uploaded Files</h2>
+            <ul>
+                {% for file in files %}
+                <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
+                {% endfor %}
+            </ul>
+            <a href="/">Back</a>
+        </div>
+    </div>
+</body>
+
+</html>
