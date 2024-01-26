@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Fuentes</title>
+    <!-- Incluir Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Lista de Fuentes</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año de Publicación</th>
+                    <th>Resumen</th>
+                    <th>Volumen</th>
+                    <th>Paginas</th>
+                    <th>ISSN</th>
+                    <th>DOI</th>
+                    <!-- Añadir más columnas si es necesario -->
+                </tr>
+            </thead>
+            <tbody>
+                {% for fuente in fuentes %}
+                <tr>
+                    <td>{{ fuente.titulo }}</td>
+                    <td>{{ fuente.autor }}</td>
+                    <td>{{ fuente.anio_publicacion }}</td>
+                    <td>{{ fuente.abstract }}</td>
+                    <td>{{ fuente.volumen }}</td>
+                    <td>{{ fuente.paginas }}</td>
+                    <td>{{ fuente.DOI }}</td>
+                    <td>{{ fuente.ISSN }}</td>
+                    <!-- Añadir más celdas si es necesario -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <!-- Incluir Bootstrap JS y Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
