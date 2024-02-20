@@ -1,0 +1,3 @@
+# config.py
+SUPABASE_API_URL = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZsZmVpYmppZnJjaGNndmlseHNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDA1OTg0MzQsImV4cCI6MjAxNjE3NDQzNH0.gFNNRHD_KTDrhhtX9XcHIDA63KFLSl4oUijjwyz2Z7Q'
+SUPABASE_PROJECT_URL = 'https://vlfeibjifrchcgvilxse.supabase.co'
