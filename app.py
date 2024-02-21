@@ -120,7 +120,7 @@ def parse_and_insert(file):
     stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
     csv_reader = csv.DictReader(stream)
 
-    target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue data', 'meeting data', 'publisher', 'document identifier']
+    target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue date', 'meeting date', 'publisher', 'document identifier']
 
     for row in csv_reader:
         # Filter the row to include only the columns present in your target list
@@ -142,16 +142,16 @@ def parse_and_insert(file):
                 filtered_data[col] = ""
 
 
-        # # Insert filtered data into the table
-        # response = supabase.table("IEEE Xplore").insert(filtered_data).execute()
+        # Insert filtered data into the table
+        response = supabase.table("IEEE Xplore").insert(filtered_data).execute()
 
-        # # Process the response as before
-        # if response.data:
-        #     inserted_id = response.data[0]['id']  # Adjust based on your table's ID column name
-        #     inserted_ids.append(inserted_id)
-        # elif response.error:
-        #     print(f"Error inserting data: {response.error.message}")
-        #     continue  # Handle errors appropriately
+        # Process the response as before
+        if response.data:
+            inserted_id = response.data[0]['id']  # Adjust based on your table's ID column name
+            inserted_ids.append(inserted_id)
+        elif response.error:
+            print(f"Error inserting data: {response.error.message}")
+            continue  # Handle errors appropriately
         print(filtered_data)
 
     return inserted_ids
