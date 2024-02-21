@@ -152,10 +152,8 @@ def parse_and_insert(file):
         elif response.error:
             print(f"Error inserting data: {response.error.message}")
             continue  # Handle errors appropriately
-        print(filtered_data)
-
     return inserted_ids
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=8000)
