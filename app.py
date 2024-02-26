@@ -124,19 +124,114 @@ def parse_and_insert(file, database):
     if database == "ieeexplore":
         target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue date', 'meeting date', 'publisher', 'document identifier']
     elif database == "eric":
-        target_columns = []
+        target_columns = ['own', 'ti', 'au', 'ot', 'jt', 'so', 'oid', 'vi', 'ip', 'pg', 'dp', 'lid', 'ab', 'issn', 'la', 'pt']
     elif database == "historial":
-        target_columns = []
+        target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue date', 'meeting date', 'publisher', 'document identifier']
     elif database == "jstor":
-        target_columns = []
+        target_columns = ['document identifier', 'document identifier', 'document identifier', 'url', 'abstract', 'author', 'journal', 'number', 'pages', 'publisher', 'title', 'urldate', 'volume', 'year']
     elif database == "pubmed":
-        target_columns = []
+        target_columns = ['pmid', 'authors', 'citation', 'first author', 'journal/book', 'publication year', 'create date', 'pmcid', 'nihms id', 'doi']
     elif database == "sciencedirect":
-        target_columns = []
+        target_columns = ['campo 1', 'campo 2', 'campo 3', 'campo 4', 'campo 5', 'campo 6', 'campo 7', 'campo 8', 'campo 9', 'campo 10']
     elif database == "scopus":
-        target_columns = []
+        target_columns = [
+        'authors',
+        'author full names',
+        'author(s) id',
+        'title',
+        'year',
+        'source title',
+        'volume',
+        'issue',
+        'art. No.',
+        'page start',
+        'page end',
+        'page count',
+        'cited by',
+        'doi',
+        'link',
+        'affiliations',
+        'authors with affiliations',
+        'abstract',
+        'author keywords',
+        'index keywords',
+        'molecular sequence numbers',
+        'chemicals/cas',
+        'tradenames',
+        'manufacturers',
+        'funding details',
+        'funding texts',
+        'references',
+        'correspondence address',
+        'editors',
+        'publisher',
+        'sponsors',
+        'conference name',
+        'conference date',
+        'conference location',
+        'conference code',
+        'issn',
+        'isbn',
+        'coden',
+        'pubmed id',
+        'language of original document',
+        'abbreviated source title',
+        'document type',
+        'publication stage',
+        'open access',
+        'source',
+        'eid'
+        ]
+
     elif database == "wos":
-        target_columns = []
+        target_columns = [
+        'authors',
+        'author full names',
+        'author(s) id',
+        'title',
+        'year',
+        'source title',
+        'volume',
+        'issue',
+        'art. no.',
+        'page start',
+        'page end',
+        'page count',
+        'cited by',
+        'doi',
+        'link',
+        'affiliations',
+        'authors with affiliations',
+        'abstract',
+        'author keywords',
+        'index keywords',
+        'molecular sequence numbers',
+        'chemicals/cas',
+        'tradenames',
+        'manufacturers',
+        'funding details',
+        'funding texts',
+        'references',
+        'correspondence address',
+        'editors',
+        'publisher',
+        'sponsors',
+        'conference name',
+        'conference date',
+        'conference location',
+        'conference code',
+        'issn',
+        'isbn',
+        'coden',
+        'pubmed id',
+        'language of original document',
+        'abbreviated source title',
+        'document type',
+        'publication stage',
+        'open access',
+        'source',
+        'eid'
+        ]
 
     for row in csv_reader:
         # Filter the row to include only the columns present in your target list
