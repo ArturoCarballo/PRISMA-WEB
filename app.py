@@ -100,8 +100,8 @@ def logout():
         del session['access_token']
     return redirect('/')
 
-@app.route('/upload', methods=['POST'])
-def upload():
+@app.route('/upload/<database>', methods=['POST'])
+def upload(database):
     if 'file' not in request.files:
         return "No file part", 400
 
@@ -111,16 +111,32 @@ def upload():
         return "No selected file", 400
 
     if file:
-        inserted_ids = parse_and_insert(file)
+        inserted_ids = parse_and_insert(file, database)
 
         return jsonify(inserted_ids)
 
-def parse_and_insert(file):
+def parse_and_insert(file, database):
     inserted_ids = []
     stream = io.StringIO(file.stream.read().decode("UTF8"), newline=None)
     csv_reader = csv.DictReader(stream)
 
-    target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue date', 'meeting date', 'publisher', 'document identifier']
+
+    if database == "ieeexplore":
+        target_columns = ['document title', 'authors', 'author affiliations', 'publication title', 'date added to xplore', 'publication year', 'volume', 'issue', 'start page', 'end page', 'abstract', 'issn', 'isbns', 'doi', 'funding information', 'pdf link', 'author keywords', 'ieee terms', 'inspec controlled terms', 'inspec non-controlled terms', 'mesh_terms', 'article citation count', 'patent citation count', 'reference count', 'license', 'online data', 'issue date', 'meeting date', 'publisher', 'document identifier']
+    elif database == "eric":
+        target_columns = []
+    elif database == "historial":
+        target_columns = []
+    elif database == "jstor":
+        target_columns = []
+    elif database == "pubmed":
+        target_columns = []
+    elif database == "sciencedirect":
+        target_columns = []
+    elif database == "scopus":
+        target_columns = []
+    elif database == "wos":
+        target_columns = []
 
     for row in csv_reader:
         # Filter the row to include only the columns present in your target list
